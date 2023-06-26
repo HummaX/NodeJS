@@ -1,4 +1,5 @@
 // FS modules is use to read,write,delete and uodate files in local machine
+// Fs > File System in node
 
 let fs = require('fs')
 
