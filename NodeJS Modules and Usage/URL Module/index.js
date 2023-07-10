@@ -10,8 +10,11 @@ let server = http.createServer((req,res)=>{
     }else if(pathName === '/products'){
         res.end('Products')
     }else{
-        res.writeHead(404)
-        res.end('Page Not Found')
+        res.writeHead(404, {
+            'Content-type': 'text/html', // these headers means that browser is expecting html
+            'my-own-header':'this is my header'
+        })
+        res.end('<h1>Page Not Found</h1>')
     }
 })
 
@@ -20,4 +23,4 @@ server.listen(3000,'127.0.0.1',()=>{ // we can specify local host address too bu
 })
 
 // Commands
-req.url // to see which url we accessed
+// req.url // to see which url we accessed
