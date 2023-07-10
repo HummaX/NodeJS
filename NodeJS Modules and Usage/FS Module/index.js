@@ -14,7 +14,12 @@ let textfile2 = fs.readFile('./fs.text','utf-8',(err,data)=>{
     console.log(data)
 })
 
+console.log('this will log first')
+
 fs.writeFileSync('./fs.text','This is edited text') // or save this text in a vaiable
+fs.writeFile('./fs.text','its aSync ', err =>{
+    console.log(err)
+})
 
 // D/W async and sync is async keep executing code in background while sync blocks code and execute code line by line
 // NodeJs runs on single cpu Thread in a sync all users use same thread, first user will perform task 2nd will wait for him
