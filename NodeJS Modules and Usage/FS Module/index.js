@@ -3,7 +3,19 @@
 
 let fs = require('fs')
 
+// Syncronous Data Reading
+// This will execute code line by line eg: codeBlocking
 let textFile = fs.readFileSync('./fs.text','utf-8')
 console.log(textFile)
 
+//Asyncronous Data Reading
+// This will kepp executing code
+let textfile2 = fs.readFile('./fs.text','utf-8',(err,data)=>{
+    console.log(data)
+})
+
 fs.writeFileSync('./fs.text','This is edited text') // or save this text in a vaiable
+
+// D/W async and sync is async keep executing code in background while sync blocks code and execute code line by line
+// NodeJs runs on single cpu Thread in a sync all users use same thread, first user will perform task 2nd will wait for him
+// while in sync multiple operation will be done on same thread without waiting last task to be completed
