@@ -1,5 +1,6 @@
 let url = require('url')
 let http = require('http')
+let fs  = require('fs')
 
 // This all datat is of HTTPS Module
 
@@ -9,9 +10,17 @@ let server = http.createServer((req,res)=>{
         res.end('Hello From These Server')
     }else if(pathName === '/products'){
         res.end('Products')
+    }else if(pathName === '/api'){
+        // using dirname we can use ./dev-data too
+fs.readFile(`${__dirname}/dev-data/data.json`,(err,data)=>{
+    res.writeHead(200,{
+        'Content-type':'application/json' // for json use application
+    })
+res.end(data)
+})
     }else{
         res.writeHead(404, {
-            'Content-type': 'text/html', // these headers means that browser is expecting html
+            'Content-type': 'text/html', // these headers means that browser is expecting html,for html use text
             'my-own-header':'this is my header'
         })
         res.end('<h1>Page Not Found</h1>')
