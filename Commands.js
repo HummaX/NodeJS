@@ -15,3 +15,6 @@ npm install slugify@1.0.0
 
 // To check outdated packages
 npm outdated
+
+// version break down
+version (1) for major updated .(11)=> also called mini version for new features .(1)=> patch version when dev fixex bugs
