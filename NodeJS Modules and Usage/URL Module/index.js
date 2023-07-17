@@ -2,6 +2,7 @@ let url = require('url')
 let http = require('http')
 let fs  = require('fs')
 
+//:id this is called query string
 // This all datat is of HTTPS Module
 
 let server = http.createServer((req,res)=>{
