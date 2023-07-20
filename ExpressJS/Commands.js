@@ -12,3 +12,8 @@ res.status(200).json({data:'data'})
 app.post('/',(req,res)=>{
     
 })
+
+// DIFFERENCE B/W PUT NAD PATCH REQUEST
+
+PUT > // in put client is required to send whole updated object
+PATCH > // in PATCH client only has to send that key of the object which got updtaed
