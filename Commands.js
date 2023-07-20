@@ -2,6 +2,10 @@
 "scripts":{
     "start":"nodemon index.js"
 }
+
+// incase node hsows that packe is not reconized we use this command
+npx nodemon appendFile.js
+
 npm start // to run this file
 
 // To save dependency as DevDependencies
