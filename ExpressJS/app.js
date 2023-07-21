@@ -25,6 +25,17 @@ app.post('/api/v1/tours',async(req,res)=>{
     console.log(toursId)
 })
 
+app.delete('/api/v1/tours/:id',(req,res)=>{
+    let tour = tours.find((tour)=>{
+return tour.id == req.params.id
+    })
+    console.log(tour)
+    res.status(204).json({
+        status:'Success',
+        data:null
+    })
+})
+
 // Params
 app.get('/api/v1/tours/:id',(req,res)=>{
     let tour = tours.find((tour)=>{

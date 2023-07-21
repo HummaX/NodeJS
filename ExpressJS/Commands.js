@@ -8,7 +8,7 @@ get
 post
 PUT
 PATCH
-
+Delete
 // Response Commands > res
 res.send('Any message which will be sent as text')
 res.status(200).send('Any message which will be sent as text')
