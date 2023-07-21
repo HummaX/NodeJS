@@ -25,4 +25,9 @@ app.post('/api/v1/tours',async(req,res)=>{
     console.log(toursId)
 })
 
+// Params
+app.get('/api/v1/tours/:id/:id2/:id3?',async(req,res)=>{
+    console.log(req.params)
+})
+
 app.listen(3000)
