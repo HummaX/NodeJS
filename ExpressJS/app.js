@@ -8,7 +8,12 @@ let app = express()
 let tours = JSON.parse(fs.readFileSync('./api-data/tours-simple.json'))
 
 app.get('/',(req,res)=>{
-    res.status(200).json({status:"Success",tours:tours})
+    res.status(200).json(
+        {
+            status:"Success",
+            data:{tours:tours}
+        }
+        )
 })
 
 app.listen(3000)
