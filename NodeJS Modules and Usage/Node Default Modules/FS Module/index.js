@@ -3,13 +3,13 @@
 
 let fs = require('fs')
 
-// Syncronous Data Reading
+// Syncronous Data Reading, we use this on top of code so that big file execute first an then we perform xpress functions
 // This will execute code line by line eg: codeBlocking
 let textFile = fs.readFileSync('./fs.text','utf-8')
 console.log(textFile)
 
 //Asyncronous Data Reading
-// This will kepp executing code
+// This will kepp executing code & we cannot return data we can only use it in express function not outside
 let textfile2 = fs.readFile('./fs.text','utf-8',(err,data)=>{
     console.log(data)
 })
