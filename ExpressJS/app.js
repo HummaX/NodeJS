@@ -26,8 +26,11 @@ app.post('/api/v1/tours',async(req,res)=>{
 })
 
 // Params
-app.get('/api/v1/tours/:id/:id2/:id3?',async(req,res)=>{
-    console.log(req.params)
+app.get('/api/v1/tours/:id',(req,res)=>{
+    let tour = tours.find((tour)=>{
+return tour.id == req.params.id
+    })
+    console.log(tour)
 })
 
 app.listen(3000)
