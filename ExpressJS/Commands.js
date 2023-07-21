@@ -21,8 +21,14 @@ req.method // to check HTTP method type
 // Routers Methods
 // POST
 app.post('/',(req,res)=>{
-    
+
 })
+
+// MIDDLEWARES IN EXPRESS
+app.use() // this middleware will run on every request we make on express 
+
+app.use(express.json()) // use it to convert body request to json
+
 
 // DIFFERENCE B/W PUT AND PATCH REQUEST
 
