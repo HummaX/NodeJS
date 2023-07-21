@@ -27,7 +27,7 @@ app.post('/',(req,res)=>{
 // MIDDLEWARES IN EXPRESS
 app.use() // this middleware will run on every request we make on express 
 
-app.use(express.json()) // use it to convert body request to json
+app.use(express.json()) // use it to convert body request to json, otherwise it will show body requets as undefined
 
 
 // DIFFERENCE B/W PUT AND PATCH REQUEST
