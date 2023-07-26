@@ -10,6 +10,7 @@ PUT
 PATCH
 Delete
 app.route
+app.params
 
 // Response Commands > res
 res.send('Any message which will be sent as text')
