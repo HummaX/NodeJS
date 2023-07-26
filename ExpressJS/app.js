@@ -49,4 +49,9 @@ app.delete('/api/v1/tours/:id',deleteTour)
 // Params
 app.get('/api/v1/tours/:id',getTourById)
 
+// methods for same router
+app.route('/api/v1/tours').get(getAllTours)
+app.route('/api/v1/tours/:id').delete(deleteTour).get(getTourById)
+
+
 app.listen(3000)
