@@ -40,7 +40,9 @@ app.post('/',(req,res)=>{
 // MIDDLEWARES IN EXPRESS
 app.use() // this middleware will run on every request we make on express 
 app.use(express.json()) // use it to convert body request to json, otherwise it will show body requets as undefined
-
+app.params((req,res,next,val)=>{ // params values is saved in val
+console.log(val)
+})
 
 // DIFFERENCE B/W PUT AND PATCH REQUEST
 PUT > // in put client is required to send whole updated object
