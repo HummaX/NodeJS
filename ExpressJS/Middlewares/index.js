@@ -1,4 +1,5 @@
 // Middlewares
+// Morgan
 
 // if we use this middeware at bottom after method is hit it wont execute as express will end reponse cycle and app.use will be left
 app.use((req,res,next)=>{
