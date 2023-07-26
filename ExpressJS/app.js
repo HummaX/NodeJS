@@ -19,13 +19,14 @@ let tours = JSON.parse(fs.readFileSync('./api-data/tours-simple.json'))
 //         )
 // })
 
-app.post('/api/v1/tours',async(req,res)=>{
+
+let getAllTours = async(req,res)=>{
     let newId = tours[tours.length-1].id +1 
     let toursId = Object.assign({id:newId},req.body)
     console.log(toursId)
-})
+}
 
-app.delete('/api/v1/tours/:id',(req,res)=>{
+let deleteTour = (req,res)=>{
     let tour = tours.find((tour)=>{
 return tour.id == req.params.id
     })
@@ -34,14 +35,18 @@ return tour.id == req.params.id
         status:'Success',
         data:null
     })
-})
+}
 
-// Params
-app.get('/api/v1/tours/:id',(req,res)=>{
+let getTourById = (req,res)=>{
     let tour = tours.find((tour)=>{
 return tour.id == req.params.id
     })
     console.log(tour)
-})
+}
+
+app.post('/api/v1/tours',getAllTours)
+app.delete('/api/v1/tours/:id',deleteTour)
+// Params
+app.get('/api/v1/tours/:id',getTourById)
 
 app.listen(3000)
