@@ -11,6 +11,8 @@ app.use(express.json())
 let tours = JSON.parse(fs.readFileSync('./api-data/tours-simple.json'))
 
 
+
+
 // Routes Handlers
 let getAllTours = app.get('/api/v1/tours',(req,res)=>{
     res.status(200).json(
@@ -21,7 +23,6 @@ let getAllTours = app.get('/api/v1/tours',(req,res)=>{
         }
         )
 })
-
 
 let toursPostRequest = async(req,res)=>{
     let newId = tours[tours.length-1].id +1 
