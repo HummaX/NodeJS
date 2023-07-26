@@ -11,7 +11,7 @@ app.use(morgan('tiny'))
 //as if file is big and we use reafile it will carsh ths server // VIDEO 52
 let tours = JSON.parse(fs.readFileSync('./api-data/tours-simple.json'))
 
-
+console.log(process.env)
 
 
 // Routes Handlers
