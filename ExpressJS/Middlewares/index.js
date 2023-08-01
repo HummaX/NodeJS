@@ -25,3 +25,8 @@ GET /api/v1/tours 200 8704 - 4.589 ms
 3) status code
 4) time it took to send response
 5) data size in bytes
+
+// Morgan in dev Enviroment
+if(process.env.NODE_ENV === 'development'){
+    app.use(morgan('dev'))
+}
