@@ -9,6 +9,8 @@ let schemaClass = new mongoose.Schema({
         unique: true, // if its true and there must be no other entry similar to this, this case applies in email
         index: true,
         sparse: true,
+        min:[4,'Too less eggs'],
+        max:10,
         validate: (value) => value.length > 3,
         alias: 'full_name',
         get: (value) => value.toUpperCase(),
