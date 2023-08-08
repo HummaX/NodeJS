@@ -9,7 +9,8 @@ NODE_ENV=production x=23 node app.js
 let dotenv = require('dotenv')
 dotenv.configure({path:}) // always keep it above app = express(), otherwise it will not run as app.(method) will only runs its methods
 
-// Now create a new .env file
+// Now create a new .env file 
+// Always keep 0 space between assingning variable and and variable name
 USER=hummas
 PASSWORD=125165
 NODE_ENV=development
