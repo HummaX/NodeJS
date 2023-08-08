@@ -17,3 +17,6 @@ NODE_ENV=development
 // if we want to run server in production simply add this in script
 "start:prod":"NODE_ENV=production nodemonapp.js"
 npm start:prod
+
+// To Access env variable
+process.env.variablename
