@@ -21,5 +21,10 @@ default:4.5
 // we define database in link of mongobd then collections in model and push out details in that collectiom/model
 
 // is just programming convetion to use model name/variable with Capital letter
-let Tour = ('tour',tourSchema) // it will automatically make collections with name tours, model makes colelctions name in plural
+let Tour = mongoose.model('tour',tourSchema) // it will automatically make collections with name tours, model makes colelctions name in plural
 // Name of model, then schema which o use with this model/collection
+
+// To Enter data in Model/Collection
+let newTour = new Tour({
+
+})
