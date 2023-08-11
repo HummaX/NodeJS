@@ -13,9 +13,10 @@ app.route
 app.params
 
 // Response Commands > res
-res.send('Any message which will be sent as text')
+res.send('Any message which will be sent as text/html or anything it just checks output and sets header accordingly')
 res.status(200).send('Any message which will be sent as text')
 res.status(200).json({data:'data'})
+res.end('its is use to quickly end response without sending any data pr data in header')
 
 //Request Commands > req
 req.method // to check HTTP method type

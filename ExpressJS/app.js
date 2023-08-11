@@ -9,12 +9,15 @@ dotenv.config({path:'./config.env'})
 // Middlewares
 app.use(express.json())
 app.use(morgan('tiny'))
+app.use((req,res,next)=>{
+   console.log(req)
+   console.log('data')
+    next()
+})
 // parse because data is in json we have to chnage it to object
 // we are using readfilesync bcz it will first read whole file then the other code on server, 
 //as if file is big and we use reafile it will carsh ths server // VIDEO 52
 let tours = JSON.parse(fs.readFileSync('./api-data/tours-simple.json'))
-
-console.log(process.env)
 
 
 // Routes Handlers
