@@ -31,3 +31,8 @@ let newTour = new Tour({
 
 // sd it returns a promise we can either use it in the async function or use .then on them
 newTour.save().then(res => console.log(res)).catch(err => console.log(err))
+
+// Another Method
+
+// if we want to create new model or add to existing model to avoid .save() etc
+let newTour = await Tour.create(req.body)
