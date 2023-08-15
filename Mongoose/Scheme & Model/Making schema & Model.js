@@ -34,5 +34,5 @@ newTour.save().then(res => console.log(res)).catch(err => console.log(err))
 
 // Another Method
 
-// if we want to create new model or add to existing model to avoid .save() etc
+// if we want to create new model or add to existing model to avoid .save() etc direct method
 let newTour = await Tour.create(req.body)
