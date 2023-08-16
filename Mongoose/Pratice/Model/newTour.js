@@ -18,4 +18,4 @@ default:4.5
 
 let Tour = mongoose.model('tour',tourSchema)
 
-exports.module = Tour
+module.exports = Tour
