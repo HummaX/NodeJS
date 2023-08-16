@@ -1,4 +1,7 @@
 let mongoose = require('mongoose')
+let express = require('express')
+let app = express()
+let {newTour} = require('./Controller/tourController')
 
 let tourSchema = new mongoose.Schema({
     name:{
@@ -16,4 +19,7 @@ default:4.5
     }
 })
 
+app.use('/api/v',newTour)
+
+app.listen(3000)
 
