@@ -1,6 +1,6 @@
 const { model } = require("mongoose")
 
-// Queries 
+// Options 
 runValidators:true //run validdators to run validation or required once again upon updating,creating document
 
 

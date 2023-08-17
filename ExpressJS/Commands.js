@@ -20,7 +20,6 @@ res.end('its is use to quickly end response without sending any data pr data in 
 
 //Request Commands > req
 req.method // to check HTTP method type
-
 req.params // Params
 app.get('/api/v1/tours/:id/:id2/:id3?') 
 // ? makes parameter optional if we dont put 3rd id in url it will show undefined but will run
