@@ -2,6 +2,7 @@ const { model } = require("mongoose")
 
 // Options 
 runValidators:true //run validdators to run validation or required once again upon updating,creating document
+new:true //if true, return the modified document rather than the original in response, if false will retunr old/original document in response
 
 
 // To save model

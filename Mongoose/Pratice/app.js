@@ -1,7 +1,7 @@
 let mongoose = require('mongoose')
 let express = require('express')
 let app = express()
-let newTour = require('./Controller/tourController')
+let tourRouter = require('./Controller/tourController')
 
 
 mongoose.connect('mongodb+srv://hummasch:PcmvUFwQfXflTR8d@cluster0.tgnuhlf.mongodb.net/NodeJS?retryWrites=true&w=majority').then(()=>{
@@ -27,7 +27,7 @@ default:4.5
 })
 
 app.use(express.json())
-app.use('/api/v1',newTour)
+app.use('/api/v1',tourRouter)
 
 
 app.listen(3000)
