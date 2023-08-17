@@ -1,5 +1,9 @@
 const { model } = require("mongoose")
 
+// Queries 
+runValidators:true //run validdators to run validation or required once again upon updating,creating document
+
+
 // To save model
 let newToour = newTour()
 await model.save()
@@ -10,3 +14,4 @@ await model.save()
 let newTour = await model.create(req.body)
 
 let findTour = await Tour.find({}) // To Find all Documents in that collection
+let findTourById = await Tour.findAndUpdate({id:id,body:req.body,runValidators:true}) // To Find all Documents in that collection,
