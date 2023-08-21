@@ -8,7 +8,6 @@ let schemaClass = new mongoose.Schema({
         default: 'John Doe', // if no value is given
         unique: true, // if its true and there must be no other entry similar to this, this case applies in email
         trim:true, // to remove space from string (only works for strings)
-        images:[String] // images contains string of array
         index: true,
         sparse: true,
         min:[4,'Too less eggs'],
@@ -17,5 +16,12 @@ let schemaClass = new mongoose.Schema({
         alias: 'full_name',
         get: (value) => value.toUpperCase(),
         set: (value) => value.toLowerCase(),
-    }
+    },
+    images:[String], // images contains string of array
+    createdAt:
+    {
+        type:Date,
+        default:Date.now()
+    },
+    startingDates:[Date] // mongodb will automatically parse these string dates into date
 });
