@@ -7,6 +7,7 @@ let schemaClass = new mongoose.Schema({
         // Required is also called validator
         default: 'John Doe', // if no value is given
         unique: true, // if its true and there must be no other entry similar to this, this case applies in email
+        trim:true, // to remove space from string (only works for strings)
         index: true,
         sparse: true,
         min:[4,'Too less eggs'],
@@ -14,6 +15,6 @@ let schemaClass = new mongoose.Schema({
         validate: (value) => value.length > 3,
         alias: 'full_name',
         get: (value) => value.toUpperCase(),
-        set: (value) => value.toLowerCase()
+        set: (value) => value.toLowerCase(),
     }
 });
