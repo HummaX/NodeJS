@@ -2,6 +2,7 @@ let mongoose = require('mongoose')
 let express = require('express')
 let app = express()
 let tourRouter = require('./Controller/tourController')
+let jsonData = require('./Script/json-to-MongoDB')
 
 
 mongoose.connect('mongodb+srv://hummasch:PcmvUFwQfXflTR8d@cluster0.tgnuhlf.mongodb.net/NodeJS?retryWrites=true&w=majority').then(()=>{
@@ -9,6 +10,8 @@ mongoose.connect('mongodb+srv://hummasch:PcmvUFwQfXflTR8d@cluster0.tgnuhlf.mongo
 }).catch((err)=>{
     console.log(err)
 })
+
+console.log(jsonData)
 
 let tourSchema = new mongoose.Schema({
     name:{
