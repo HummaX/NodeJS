@@ -22,3 +22,6 @@ npm outdated
 
 // version break down
 version (1) for major updated .(11)=> also called mini version for new features .(1)=> patch version when dev fixes bugs
+
+// To see path of running file
+console.log(process.argv) // will return 2 arrays where node is located and second from where script is running
