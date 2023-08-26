@@ -14,6 +14,7 @@ app.params
 
 // Response Commands > res
 res.send('Any message which will be sent as text/html or anything it just checks output and sets header accordingly')
+res.render('to redner html file')
 res.status(200).send('Any message which will be sent as text')
 res.status(200).json({data:'data'})
 res.end('its is use to quickly end response without sending any data pr data in header')
@@ -21,6 +22,7 @@ res.end('its is use to quickly end response without sending any data pr data in 
 //Request Commands > req
 req.method // to check HTTP method type
 req.params // Params
+req.query // Query string ?id=10&difficulty=20
 app.get('/api/v1/tours/:id/:id2/:id3?') 
 // ? makes parameter optional if we dont put 3rd id in url it will show undefined but will run
 // if we require 3rd id and not put ? then this route will not run

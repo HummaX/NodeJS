@@ -21,7 +21,13 @@ await updateTour.save()
 return res.status(200).json({status:'success',data:updateTour})
 }
 
+let tourFiltering = async(req,res)=>{
+    let findTour = await Tour.find(req.query)
+    return res.status(200).json({status:'Success',reponse:findTour})
+}
+
 router.route('/new').post(newTour)
 router.route('/update/:id').patch(updateTour)
+router.route('/find').get(tourFiltering)
 
 module.exports = router
