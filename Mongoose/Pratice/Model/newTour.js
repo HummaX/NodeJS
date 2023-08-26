@@ -4,6 +4,7 @@ let tourSchema = new mongoose.Schema({
     name:{ type:String,required:[true,'A Tour Must Have a name'],unique:true},
     price:{type:Number, required:[true,'a Tour Must Have a Price']},
     rating:{type:Number, default:4.5},
+    difficulty:String,
     summary:String,
     description:String,
     ratingsQuantity:Number,
