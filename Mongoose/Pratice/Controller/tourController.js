@@ -26,8 +26,17 @@ let tourFiltering = async(req,res)=>{
     return res.status(200).json({status:'Success',reponse:findTour})
 }
 
+let testingTour = async(req,res)=>{
+    let queryString = JSON.stringify(req.query)
+    queryString = queryString.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`)
+    let data = await Tour.find(JSON.parse(queryString))
+    console.log(data,queryString)
+    return res.status(200).json({results:data.length,data:data})
+}
+
 router.route('/new').post(newTour)
 router.route('/update/:id').patch(updateTour)
 router.route('/find').get(tourFiltering)
+router.route('/testing').get(testingTour)
 
 module.exports = router

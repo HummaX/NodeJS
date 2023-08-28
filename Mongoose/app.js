@@ -5,6 +5,7 @@ let app = express()
 
 dotenv.config({path:'./config.env'})
 
+
 let database = process.env.DATABASE
 mongoose.connect(database).then(()=>{
     console.log('mongoose connected 2')

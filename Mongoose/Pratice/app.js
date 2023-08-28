@@ -1,8 +1,11 @@
 let mongoose = require('mongoose')
 let express = require('express')
 let app = express()
+let morgan = require('morgan')
 let tourRouter = require('./Controller/tourController')
 let toursScript = require('./Script/json-to-MongoDB')
+
+app.use(morgan('dev'))
 
 
 mongoose.connect('mongodb+srv://hummasch:PcmvUFwQfXflTR8d@cluster0.tgnuhlf.mongodb.net/NodeJS?retryWrites=true&w=majority').then(()=>{
