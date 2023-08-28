@@ -30,7 +30,7 @@ let testingTour = async(req,res)=>{
     let queryString = JSON.stringify(req.query)
     queryString = queryString.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`)
     let data = await Tour.find(JSON.parse(queryString))
-    console.log(data,queryString)
+    console.log(req.query)
     return res.status(200).json({results:data.length,data:data})
 }
 
