@@ -27,11 +27,8 @@ let tourFiltering = async(req,res)=>{
 }
 
 let testingTour = async(req,res)=>{
-    let queryString = JSON.stringify(req.query)
-    queryString = queryString.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`)
-    let data = await Tour.find(JSON.parse(queryString))
-    console.log(req.query)
-    return res.status(200).json({results:data.length,data:data})
+    let data = await Tour.find().sort('ratingsQuantity')
+    res.status(200).json({data:data})
 }
 
 router.route('/new').post(newTour)
