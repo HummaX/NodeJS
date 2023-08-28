@@ -24,3 +24,4 @@ let findTourById = await Tour.findAndUpdate({id:id,body:req.body,runValidators:t
 let filterTour = await Tour.find({difficulty:10,id:1}) // to find specific data
 let filterTour2 = await Tour.find(req.query)  //Query string ?id=10&difficulty=20
 let toue1 = await Tour.find().where('difficuilty').equals(5).where('id').equals(1) // is similar to find just more mongoose methods
+// MongoDB operators like $gte,$lte usage in mongoose check Data Filteration Folder

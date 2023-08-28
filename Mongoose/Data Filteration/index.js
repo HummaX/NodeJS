@@ -8,7 +8,7 @@ exports.getallTours = async(req,res)=>{
 }
 
 
-// to use mongoDB operators in mongoose (video 95)
+// to use mongoDB operators in mongoose (video 96)
 let testingTour = async(req,res)=>{
     let queryString = JSON.stringify(req.query) // since data is not in string we cannot use replace
     queryString = queryString.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`) // regex to use
