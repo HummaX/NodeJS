@@ -1,5 +1,7 @@
+// Srting data accesing/decing with one or more queries
+
 let testingTour = async(req,res)=>{
-    console.log(req.query)
+
     req.query.sort = req.query.sort.split(',').join(' ')
     let data = await Tour.find().sort(req.query.sort) // ascending order (lower to higher)
     // url http://localhost:3000/api/v1/testing?sort=price
