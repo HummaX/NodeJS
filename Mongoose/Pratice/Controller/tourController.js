@@ -27,7 +27,12 @@ let tourFiltering = async(req,res)=>{
 }
 
 let testingTour = async(req,res)=>{
-    let data = await Tour.find().sort('ratingsQuantity')
+    console.log(req.query)
+    let data = await Tour.find().sort(req.query.sort) // ascending order (lower to higher)
+    // url http://localhost:3000/api/v1/testing?sort=price
+
+    // for decending (higher to lower) order put - in price in url of postman eg: http://localhost:3000/api/v1/testing?sort=-price
+
     res.status(200).json({data:data})
 }
 
