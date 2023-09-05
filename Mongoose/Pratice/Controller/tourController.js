@@ -3,7 +3,6 @@ let app = express()
 let router = express.Router()
 
 let Tour = require('../Model/newTour')
-let video = require('./video.html')
 
 
 let newTour = async (req,res)=>{
