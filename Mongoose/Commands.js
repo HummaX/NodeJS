@@ -30,3 +30,9 @@ let tourData = await Tour.find().select('-name') Tour.split(',').join('-') //we 
 
 // Sorting Data
 let data = await Tour.find().sort(req.query.sort) // ascending order (lower to higher) check sorting file
+
+// Pagination
+
+// skip represents (page) amount of data should be skipped, like 10 first results should be skipped skip * limit formula works here (video 99)
+//limit represnts number of results from 0-1 if 10, if 20 11-20
+await Tour.find().skip(req.query.page).limit(req.query.limit) //http://localhost:3000/api/v1/testing?page=1&limit=1

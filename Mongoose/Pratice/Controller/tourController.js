@@ -27,8 +27,8 @@ let tourFiltering = async(req,res)=>{
 }
 
 let testingTour = async(req,res)=>{
-    let tourData = await Tour.find().select('-name')
-    res.status(200).send({data:tourData})
+    let tourData = await Tour.find().skip(req.query.page).limit(req.query.limit)
+    res.json({results:tourData.length,status:'Succcess',data:tourData})
 }
 
 router.route('/new').post(newTour)
