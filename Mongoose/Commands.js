@@ -36,3 +36,9 @@ let data = await Tour.find().sort(req.query.sort) // ascending order (lower to h
 // skip represents (page) amount of data should be skipped, like 10 first results should be skipped skip * limit formula works here (video 99)
 //limit represnts number of results from 0-1 if 10, if 20 11-20
 await Tour.find().skip(req.query.page).limit(req.query.limit) //http://localhost:3000/api/v1/testing?page=1&limit=1
+
+// to avoid empty page with emty results
+if(req.query.page){
+    let numTours = await Tour.countDocuments()
+    if(numTours <= 0) throw new Error('Page not found') // or check video 99 logic itsdifferent 
+}
