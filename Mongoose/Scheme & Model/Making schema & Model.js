@@ -3,6 +3,9 @@ let mongoose = require('mongoose')
 let schema = mongoose.schema()
 
 let tourSchema = new schema({
+    pass:{
+        select:false // to hide this in reponse instead os uding - or seletc('-password') we can give it  in default in model
+    }
     name:{
         type:String,
         required:[true,'A Tour Must Have a name'],

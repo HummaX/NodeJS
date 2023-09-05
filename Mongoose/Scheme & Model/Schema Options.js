@@ -1,6 +1,9 @@
  
 // Defining schema
 let schemaClass = new mongoose.Schema({
+    pass:{
+        select:false // to hide this in reponse instead os uding - or seletc('-password') we can give it  in default in model
+    },
     name: {
         type: String, 
         required:[true,'A data is requires here must'],// Either true or false ,['This is Err we want to give']
