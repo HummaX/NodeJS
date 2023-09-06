@@ -27,9 +27,11 @@ let tourFiltering = async(req,res)=>{
 }
 
 let testingTour = async(req,res)=>{
-    let tourData = await Tour.find().skip(req.query.page).limit(req.query.limit)
+    let tourData = await Tour.find().sort(req.query.sort)
     res.json({results:tourData.length,status:'Succcess',data:tourData})
 }
+
+
 
 router.route('/new').post(newTour)
 router.route('/update/:id').patch(updateTour)
