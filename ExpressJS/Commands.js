@@ -21,6 +21,7 @@ res.end('its is use to quickly end response without sending any data pr data in 
 
 //Request Commands > req
 req.method // to check HTTP method type
+req.requestTime = new Date().toISOString() // to get when that router was hit (custom req object)
 req.params // Params
 req.query // Query string ?id=10&difficulty=20
 app.get('/api/v1/tours/:id/:id2/:id3?') 
@@ -45,6 +46,9 @@ app.use(express.json()) // use it to convert body request to json, otherwise it 
 app.params((req,res,next,val)=>{ // params values is saved in val
 console.log(val)
 })
+
+// To add or overWrite req,res data
+req.requestTime = new Date().toISOString() // this will add cutome obj in req we can use to get request time
 
 // DIFFERENCE B/W PUT AND PATCH REQUEST
 PUT > // in put client is required to send whole updated object

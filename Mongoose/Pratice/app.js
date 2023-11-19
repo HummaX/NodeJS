@@ -17,6 +17,11 @@ mongoose.connect(`mongodb+srv://hummasch:BjFFpaF7GWM2oCsY@cluster0.tgnuhlf.mongo
 
 
 app.use(express.json())
+app.use((req,res,next)=>{
+    req.requestTime = new Date().toISOString()
+    console.log(req.requestTime)
+    next()
+})
 app.use('/api/v1',tourRouter)
 
 app.post('/api/v1/script/addall',toursScript.addTours)

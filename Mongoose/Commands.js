@@ -7,6 +7,8 @@ runValidators:true //run validdators to run validation or required once again up
 new:true //if true, return the modified document rather than the original in response, if false will retunr old/original document in response
 images:[String] // if you want to make a array of string,
 startingDates:[Date] // mongodb will automatically parse these string dates into date
+//Working
+jame.find({},runvalidator:true,'or store these objects in object and point towards that object/variable name')
 
 
 // To save model
