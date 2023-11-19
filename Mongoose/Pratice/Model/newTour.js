@@ -13,6 +13,13 @@ let tourSchema = new mongoose.Schema({
     imageCover:String,
     images:[String],
     startDates:[Date]
+},{
+    toJSON:{virtuals:true},
+    toObject:{virtuals:true}
+})
+
+tourSchema.virtual('priceMuliplier').get(function(){
+return this.price * 10
 })
 
 let Tour = mongoose.model('tour',tourSchema)
