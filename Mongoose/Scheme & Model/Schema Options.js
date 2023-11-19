@@ -37,7 +37,7 @@ let schemaClass = new mongoose.Schema(
 );
 
 // Virtual (check virtual file)
-// Virtual are not part of DB these are like aggregation they return as object in resposne after getting calcualtions on them.
+// Virtual are not part of DB these are like aggregation they return as new object in resposne after getting calcualtions on them.
 // we either define them in model or call them, in model these auto get executed when Schema options are given
 
 schemaClass.virtual("gettingDuration").get(function () { //virtual name in string
