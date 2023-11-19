@@ -26,5 +26,6 @@ let schemaClass = new mongoose.Schema({
         type:Date,
         default:Date.now()
     },
-    startingDates:[Date] // mongodb will automatically parse these string dates into date
+    startingDates:[Date], // mongodb will automatically parse these string dates into date
+    startDates:[String] // enter date as string not new Date 
 });

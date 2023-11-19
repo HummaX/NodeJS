@@ -27,7 +27,24 @@ let tourFiltering = async(req,res)=>{
 }
 
 let testingTour = async(req,res)=>{
-    let tourData = await Tour.find().sort(req.query.sort)
+    let {year} = req.params
+    console.log(year)
+    let tourData = await Tour.aggregate([
+        {
+            $unwind:'$startDates'
+        },
+        {
+        $match:{startDates:{$gte:new Date(`${year}-01-01`),$lte:new Date(`${year}-12-31`)}}
+        },
+        {
+            $group:{
+                _id:{$month:'$startDates'},
+                tourNumber:{$sum:1},
+                toursName:{$push:"$name"}
+            },
+        }
+    ])
+    // let tourData = await Tour.find()
     res.json({results:tourData.length,status:'Succcess',data:tourData})
 }
 
@@ -36,6 +53,6 @@ let testingTour = async(req,res)=>{
 router.route('/new').post(newTour)
 router.route('/update/:id').patch(updateTour)
 router.route('/find').get(tourFiltering)
-router.route('/testing').get(testingTour)
+router.route('/testing/:year').get(testingTour)
 
 module.exports = router

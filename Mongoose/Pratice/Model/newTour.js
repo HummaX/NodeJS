@@ -12,7 +12,7 @@ let tourSchema = new mongoose.Schema({
     id:Number,
     imageCover:String,
     images:[String],
-    startDates:[String]
+    startDates:[Date]
 })
 
 let Tour = mongoose.model('tour',tourSchema)
