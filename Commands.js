@@ -8,6 +8,8 @@ npx nodemon appendFile.js
 
 npm start // to run this file
 
+npm run 'script name' // to run custom script include RUN in npm
+
 // To save dependency as DevDependencies
 npm install {package name} --save-dev
 
