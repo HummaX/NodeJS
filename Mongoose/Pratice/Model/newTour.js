@@ -18,8 +18,12 @@ let tourSchema = new mongoose.Schema({
     toObject:{virtuals:true}
 })
 
-tourSchema.virtual('priceMuliplier').get(function(){
-return this.price * 10
+// tourSchema.virtual('priceMuliplier').get(function(){
+// return this.price * 10
+// })
+
+tourSchema.post('find',function(doc,next){
+    console.log(doc)
 })
 
 let Tour = mongoose.model('tour',tourSchema)
