@@ -5,3 +5,4 @@ process.env.UV_THREADPOOL_SIZE = 1 // UV > LibUV
 // To auto set Node enviroment on launch
 // Make a script command
 "Start:prod":"NODE_ENV=production nodemon app.js"
+"debug":"ndb app.js"
