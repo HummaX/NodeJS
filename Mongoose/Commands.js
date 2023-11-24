@@ -16,7 +16,7 @@ let newToour = newTour()
 await model.save()
 
 
-// To avoid new tour and saving we coud use this instead
+// To avoid new tour and saving we could use this instead
 //So, if you want to create a new instance of a model and save it to the database in one step, you can use the create method. 
 //If you have an existing instance of a model that you want to save to the database, you should use the save method
 let newTour = await model.create(req.body) // to avoid tour.save()
@@ -54,7 +54,7 @@ let data = await Tour.find().sort(req.query.sort) // ascending order (lower to h
 await Tour.find().skip(req.query.page).limit(req.query.limit) //http://localhost:3000/api/v1/testing?page=1&limit=1
 
 
-// To modifly Pipeline of MongoDB (Check middlwarte folder, Aggregation middleware)
+// To modify Pipeline of MongoDB (Check middlware folder, Aggregation middleware)
 // we run multiple Aggrergations, we cant make changes to all of them if we want to hide/filter some info in them we can run a middleware.
 tourSchema.pre('aggregation',function(next){ 
     console.log(this) // it will show show aggregation object
