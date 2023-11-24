@@ -19,10 +19,14 @@ mongoose.connect(`mongodb+srv://hummasch:BjFFpaF7GWM2oCsY@cluster0.tgnuhlf.mongo
 app.use(express.json())
 app.use((req,res,next)=>{
     req.requestTime = new Date().toISOString()
-    console.log(req.requestTime)
+    console.log(req.requestTime,'request time')
     next()
 })
 app.use('/api/v1',tourRouter)
+
+app.all('*',(req,res,next)=>{
+return res.status(404).json({message:'Not Found'})
+})
 
 app.post('/api/v1/script/addall',toursScript.addTours)
 app.delete('/api/v1/script/deleteall',toursScript.deleteAllTours)

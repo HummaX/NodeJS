@@ -11,6 +11,8 @@ PATCH
 Delete
 app.route
 app.params
+app.all
+
 
 // Response Commands > res
 res.send('Any message which will be sent as text/html or anything it just checks output and sets header accordingly')
@@ -18,6 +20,7 @@ res.render('to redner html file')
 res.status(200).send('Any message which will be sent as text')
 res.status(200).json({data:'data'})
 res.end('its is use to quickly end response without sending any data pr data in header')
+
 
 //Request Commands > req
 req.method // to check HTTP method type
@@ -34,25 +37,40 @@ http://localhost:3000/api/v1/tours/1/2
 http://localhost:3000/api/v1/tours/1/2
 
 
-// Routers Methods
+// Route Methods with app
 // POST
 app.post('/',(req,res)=>{
 
 })
 
+
+// Router Method with router.use()
+// check Router Folder
+
+
 // MIDDLEWARES IN EXPRESS
-app.use() // this middleware will run on every request we make on express 
+app.use((err,req,res,next)) // this middleware will run on every request we make on express 
 app.use(express.json()) // use it to convert body request to json, otherwise it will show body requets as undefined
 app.params((req,res,next,val)=>{ // params values is saved in val
 console.log(val)
 })
+app.all('/api/') //use * for all routes, will only work with HTTPS requests like (POST, GET, DELETE, PUT) unlike app.use() will run on everything (Check Error Handling below and folder) E.g: Statis pages will show static page for JS templates
+
 
 // To add or overWrite req,res data
 req.requestTime = new Date().toISOString() // this will add cutome obj in req we can use to get request time
 
+
 // DIFFERENCE B/W PUT AND PATCH REQUEST
 PUT > // in put client is required to send whole updated object
 PATCH > // in PATCH client only has to send that key of the object which got updated
+
+
+// Error Handling
+app.all('/api/',(err,req,res,next)=>{ // use * for all routes
+return res.status(404).json({message:'Not Found'})
+}) // will only work with HTTPS requests like (POST, GET, DELETE, PUT) unlike app.use() will run on everything E.g: Statis pages will show static page for JS templates
+
 
 // RIGHT WAY OF SENDING JSON DATA
 app.get('/api/v1/tours',(req,res)=>{

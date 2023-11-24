@@ -23,7 +23,7 @@ return res.status(200).json({status:'success',data:updateTour})
 
 let tourFiltering = async(req,res)=>{
     let findTour = await Tour.find(req.query)
-    return res.status(200).json({status:'Success',reponse:findTour})
+     res.status(200).json({status:'Success',reponse:findTour})
 }
 
 let testingTour = async(req,res)=>{

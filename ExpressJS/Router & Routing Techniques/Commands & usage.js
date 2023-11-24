@@ -19,3 +19,11 @@ module.exports = router
 
 //in app.js
 app.use('/',allToursRoute)
+
+// Router Commands
+let router = express.Router()
+
+router.use('/'function()) // middleware similar to app.use but for just routes app.use comes on application level it comes on small level
+
+router.post()
+router.route('/api',function()).post()

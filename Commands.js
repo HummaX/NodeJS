@@ -30,3 +30,8 @@ process.exit()
 
 // To see path of running file
 console.log(process.argv) // will return 2 arrays where node is located and second from where script is running
+
+// Exporting in NodeJs
+exports.function(){}
+exports.jame = function(){}
+module.exports = james
