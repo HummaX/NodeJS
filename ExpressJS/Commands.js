@@ -20,12 +20,13 @@ res.render('to redner html file')
 res.status(200).send('Any message which will be sent as text')
 res.status(200).json({data:'data'})
 res.end('its is use to quickly end response without sending any data pr data in header')
-
+res.redirect('/url here') // in case of error or something
 
 //Request Commands > req
 req.method // to check HTTP method type
 req.requestTime = new Date().toISOString() // to get when that router was hit (custom req object)
 req.params // Params
+req.body //body json data
 req.originalUrl // for error if page not found show this cant find this page 
 req.query // Query string ?id=10&difficulty=20 // will auto pick id,difficulty dont need to give like params in url of express, by ?
 app.get('/api/v1/tours/:id/:id2/:id3?') 

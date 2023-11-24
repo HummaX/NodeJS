@@ -27,3 +27,8 @@ router.use('/'function()) // middleware similar to app.use but for just routes a
 
 router.post()
 router.route('/api',function()).post()
+
+// Invalid Route
+app.all('/api/',(err,req,res,next)=>{ // use * for all routes
+    return res.status(404).json({message:'Not Found'})
+    }) // will only work with HTTPS requests like (POST, GET, DELETE, PUT) unlike app.use() will run on everything E.g: Statis pages will show static page for JS templates
