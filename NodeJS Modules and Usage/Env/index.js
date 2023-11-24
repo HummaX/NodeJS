@@ -21,3 +21,9 @@ npm start:prod
 
 // To Access env variable
 process.env.variablename
+
+// To auto set Node enviroment on launch
+// Make a script command
+"Start:prod":"NODE_ENV=production nodemon app.js"
+"debug":"ndb app.js"
+
