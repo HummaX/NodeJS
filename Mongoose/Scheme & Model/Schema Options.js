@@ -19,6 +19,10 @@ let schemaClass = new mongoose.Schema(
       minLength:[10,'A tour name must have higher or equal to 10 characters'], // used for string arrya of 10 string length
       validate: (value) => value.length > 3,
       alias: "full_name",
+      enum: { // values which are only allowed or options
+        values: ['easy', 'medium', 'difficult'],
+        message: 'Difficult is either easy, medium, difficult.'
+    },
       get: (value) => value.toUpperCase(),
       set: (value) => value.toLowerCase(),
     },
