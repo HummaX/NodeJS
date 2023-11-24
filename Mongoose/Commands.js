@@ -3,7 +3,7 @@ const Tour = require("./Pratice/Model/newTour")
 
 
 // Options 
-runValidators:true //run validdators to run validation or required once again upon updating,creating document
+runValidators:true //run validdators to run validation or required once again upon updating,creating document (if false will skip Schema validations eg: Required)
 new:true //if true, return the modified document rather than the original in response, if false will retunr old/original document in response
 images:[String] // if you want to make a array of string,
 startingDates:[Date] // mongodb will automatically parse these string dates into date

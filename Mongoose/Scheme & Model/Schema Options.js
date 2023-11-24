@@ -14,7 +14,9 @@ let schemaClass = new mongoose.Schema(
       index: true,
       sparse: true,
       min: [4, "Too less eggs"],
-      max: 10,
+      max: 10, // used for numbers
+      maxLength:[40,'A tour name must have less or equal to 40 characters'], // used for string arrya of 10 string length
+      minLength:[10,'A tour name must have higher or equal to 10 characters'], // used for string arrya of 10 string length
       validate: (value) => value.length > 3,
       alias: "full_name",
       get: (value) => value.toUpperCase(),
