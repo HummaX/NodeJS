@@ -26,6 +26,7 @@ res.end('its is use to quickly end response without sending any data pr data in 
 req.method // to check HTTP method type
 req.requestTime = new Date().toISOString() // to get when that router was hit (custom req object)
 req.params // Params
+req.originalUrl // for error if page not found show this cant find this page 
 req.query // Query string ?id=10&difficulty=20 // will auto pick id,difficulty dont need to give like params in url of express, by ?
 app.get('/api/v1/tours/:id/:id2/:id3?') 
 // ? makes parameter optional if we dont put 3rd id in url it will show undefined but will run
@@ -39,9 +40,13 @@ http://localhost:3000/api/v1/tours/1/2
 
 // Route Methods with app
 // POST
-app.post('/',(req,res)=>{
-
-})
+app.post('/api/v1/tours',getAllTours)
+app.delete('/api/v1/tours/:id',deleteTour)
+// Params
+app.get('/api/v1/tours/:id',getTourById)
+// methods for same router
+app.route('/api/v1/tours').get(getAllTours)
+app.route('/api/v1/tours/:id').delete(deleteTour).get(getTourById)
 
 
 // Router Method with router.use()
