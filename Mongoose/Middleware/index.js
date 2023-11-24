@@ -1,9 +1,10 @@
 // There are 2 type of middleware, and middleware can work with Document, Query, Aggregate, Model
-// 1: Runs before Document Processing/Working
+// 1: Runs before Document Processing/Working (wont shown data in post middleware)
 // 2: Runs after Document Processing/Working
 
 // These Middlwares work only with .save() & .create()
 
+// Document Middlewares
 // Middleware before .pre()
 tourSchema.pre('find',function(next){ 
     console.log('will save document')
@@ -23,6 +24,32 @@ tourSchema.post('save',function(doc,next){ //save represents .save() function
 })
 
 tourSchema.post('find',function(doc,next){
-    console.log(doc) // will show document on wehich we are working
+    console.log(doc) // will show document on which we are working
+    next()
+})
+
+// Query Middlewares
+tourSchema.pre(/^find/,function(next){ // This find will run on all find functions, and filter data on all find peroperties unlike other if i put 'find' here it will only filter in find function and show that secret or any calculated result in findone or findMany, this is shortcut to add all find method just add this
+    this.find({password:{select:false}}) // will not return password
+    this.start = Date.now()
+    next()
+    // we can run find method here too
+})
+
+tourSchema.post('find',function(doc,next){
+    console.log(`This quer took ${Date.now() - this.start} milliSeconds`)
+    console.log(doc) // will show document on which we are working
+    next()
+})
+
+// Aggregation Middleware
+
+// we run multiple Aggrergations, we cant make changes to all of them if we want to hide/filter some info in them we can run a middleware.
+tourSchema.pre('aggregation',function(next){ 
+
+    console.log(this) // it will show show aggregation object
+    console.log(this.pipeline()) // will show only aggregation Array with aggergation argunments object
+
+    this.pipeline.unShift({$match: {secretTour:{$ne: true}}}) // Now it will add this into aggregation (Pipeline/Array) which will filter all secret tours
     next()
 })

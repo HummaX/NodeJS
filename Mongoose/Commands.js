@@ -23,8 +23,12 @@ let newTour = await model.create(req.body) // to avoid tour.save()
 let findTour = await Tour.find({}) // To Find all Documents in that collection
 let findTourById = await Tour.findAndUpdate({id:id,body:req.body,runValidators:true}) // To Find all Documents in that collection,
 
-// Middlwares (to give pre-filtred data similar to sorting)
+// Middlewares (to give pre-filtred data similar to sorting)
 // check(middleware folder)
+.pre() // operated on documents before returning result
+.post() // operates on documents after returning result
+/^find/ // One property to run on all findMethods instead of chaining findOne,find,findAndDelete (Check below function)
+tourName.pre(/^find/,function({})) // This find will run on all find functions, and filter data on all find peroperties unlike other if i put 'find' her it will only filter in find function and show that secret or any calculated result in findone or findMany, this is shortvut to add all find method just add this
 
 
 // MongoDB Aggregation (calculation advance sorting)
@@ -48,6 +52,16 @@ let data = await Tour.find().sort(req.query.sort) // ascending order (lower to h
 // skip represents (page) amount of data should be skipped, like 10 first results should be skipped skip * limit formula works here (video 99)
 //limit represnts number of results from 0-1 if 10, if 20 11-20
 await Tour.find().skip(req.query.page).limit(req.query.limit) //http://localhost:3000/api/v1/testing?page=1&limit=1
+
+
+// To modifly Pipeline of MongoDB (Check middlwarte folder, Aggregation middleware)
+// we run multiple Aggrergations, we cant make changes to all of them if we want to hide/filter some info in them we can run a middleware.
+tourSchema.pre('aggregation',function(next){ 
+    console.log(this) // it will show show aggregation object
+    console.log(this.pipeline()) // will show only aggregation Array with aggergation argunments object
+    this.pipeline.unShift({$match: {secretTour:{$ne: true}}}) // Now it will add this into aggregation (Pipeline/Array) which will filter all secret tours
+    next()
+})
 
 
 // to avoid empty page with empty results
