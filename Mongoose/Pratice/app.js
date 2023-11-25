@@ -25,7 +25,12 @@ app.use((req,res,next)=>{
 app.use('/api/v1',tourRouter)
 
 app.all('*',(req,res,next)=>{
-return res.status(404).json({message:'Not Found'})
+throw new Error(`This route ${req.originalUrl} not found`)
+
+})
+
+app.use((err,req,res)=>{
+return res.status(err.code).json({message:err.message})
 })
 
 app.post('/api/v1/script/addall',toursScript.addTours)

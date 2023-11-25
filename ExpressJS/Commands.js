@@ -72,7 +72,7 @@ PUT > // in put client is required to send whole updated object
 PATCH > // in PATCH client only has to send that key of the object which got updated
 
 
-// Error Handling
+// Error Handling (Check Folder)
 app.all('/api/',(err,req,res,next)=>{ // use * for all routes
 return res.status(404).json({message:'Not Found'})
 }) // will only work with HTTPS requests like (POST, GET, DELETE, PUT) unlike app.use() will run on everything E.g: Statis pages will show static page for JS templates
