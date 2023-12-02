@@ -78,7 +78,10 @@ return res.status(404).json({message:'Not Found'})
 }) // will only work with HTTPS requests like (POST, GET, DELETE, PUT) unlike app.use() will run on everything E.g: Statis pages will show static page for JS templates
 
 //Console to Error handling
-console.log(err.stack);
+console.log(err.stack)
+console.error(err)
+console.log(err.name)
+err.isOperational
 
 
 
