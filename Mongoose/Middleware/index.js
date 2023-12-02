@@ -39,7 +39,7 @@ tourSchema.pre(/^find/,function(next){ // This find will run on all find functio
 tourSchema.post('find',function(doc,next){
     console.log(`This quer took ${Date.now() - this.start} milliSeconds`)
     console.log(doc) // will show document on which we are working
-    next()
+    next() // must use otehrwise poastman will be stuck
 })
 
 // Aggregation Middleware

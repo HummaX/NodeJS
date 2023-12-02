@@ -22,9 +22,10 @@ let tourSchema = new mongoose.Schema({
 // return this.price * 10
 // })
 
-tourSchema.post('find',function(doc,next){
-    console.log(doc)
-})
+// tourSchema.post('find',function(doc,next){
+//     console.log(doc)
+//     next()
+// })
 
 let Tour = mongoose.model('tour',tourSchema)
 

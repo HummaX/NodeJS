@@ -4,6 +4,7 @@
 // to acces node env
 //we need to run node js, these variable will get saved in node enviroment variables
 NODE_ENV=production x=23 node app.js
+$env:NODE_ENV="production"; nodemon app.js
 
 // now we need to push our details in env so we add node module which is dotenv
 let dotenv = require('dotenv')
