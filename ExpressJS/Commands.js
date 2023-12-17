@@ -42,6 +42,7 @@ http://localhost:3000/api/v1/tours/1/2
 // Route Methods with app
 // POST
 app.post('/api/v1/tours',getAllTours)
+app.pust('/api/v1/tours',getAllTours)
 app.delete('/api/v1/tours/:id',deleteTour)
 // Params
 app.get('/api/v1/tours/:id',getTourById)

@@ -1,6 +1,6 @@
 let mongoose = require("mongoose");
 
-let schema = mongoose.schema();
+let schema = mongoose.Schema;
 
 let tourSchema = new schema({
   pass: {

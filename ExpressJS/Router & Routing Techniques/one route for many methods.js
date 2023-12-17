@@ -37,3 +37,13 @@ app.get('/api/v1/tours/:id',getTourById)
 // methods for same router
 app.route('/api/v1/tours').get(getAllTours)
 app.route('/api/v1/tours/:id').delete(deleteTour).get(getTourById)
+
+// Other method to use router
+app.use('/',router()) // have to execute router fucntion here to get route object
+
+// in router file
+
+module.export = async()=>{
+    router.route('/login',function())
+    return router // we need router value if we return router it will get executed and will retun routes
+}

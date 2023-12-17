@@ -1,7 +1,6 @@
 const { model } = require("mongoose")
 const Tour = require("./Pratice/Model/newTour")
 
-
 // Options 
 runValidators:true //run validdators to run validation or required once again upon updating,creating document (if false will skip Schema validations eg: Required)
 new:true //if true, return the modified document rather than the original in response, if false will retunr old/original document in response
@@ -63,6 +62,20 @@ tourSchema.pre('aggregation',function(next){
     next()
 })
 
+// Bypassing Schema
+// In mongoDB schema validation only work until we give thme input they does not work to add those fields in DB
+// we give some value in pre hook undefined it will not go to DB instead we just wanted it for validation we can undefine it 
+
+//mongoose does work till validating after that we can do whatever we want like not sendinf data to DB
+// once it took input and validated it now its none of its concern, n ew before savinf to DB we can run pre hook
+confirmPassword:{
+    type:String,
+    required:[true, 'Password is required'],
+    validate:{validator:function(value){return value === this.password},message:'Password are not same'}
+  }
+  // In pre hook 
+  // wont save confrim password in DB
+  this.confirmPassword = undefined  //dont give null
 
 // to avoid empty page with empty results
 if(req.query.page){

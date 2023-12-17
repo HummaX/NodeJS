@@ -32,3 +32,14 @@ router.route('/api',function()).post()
 app.all('/api/',(err,req,res,next)=>{ // use * for all routes
     return res.status(404).json({message:'Not Found'})
     }) // will only work with HTTPS requests like (POST, GET, DELETE, PUT) unlike app.use() will run on everything E.g: Statis pages will show static page for JS templates
+
+
+// Other method to use router
+app.use('/',router()) // have to execute router fucntion here to get route object
+
+// in router file
+
+module.export = async()=>{
+    router.route('/login',function())
+    return router // we need router value if we return router it will get executed and will retun routes
+}

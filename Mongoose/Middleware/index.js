@@ -1,12 +1,15 @@
 // There are 2 type of middleware, and middleware can work with Document, Query, Aggregate, Model
-// 1: Runs before Document Processing/Working (wont shown data in post middleware)
-// 2: Runs after Document Processing/Working
+// 1: Runs before Document Processing/Working/savingInDB (wont shown data in post middleware)
+// 2: Runs after Document Processing/Working/saving (independent from mnongoose validations)
+
+//mongoose does work till validating after that we can do whatever we want like not sending data to DB
+// once it took input and validated it now its none of its concern, now before saving to DB we can run pre hook
 
 // These Middlwares work only with .save() & .create()
 
 // Document Middlewares
 // Middleware before .pre()
-tourSchema.pre('find',function(next){ 
+tourSchema.pre('find',function(next){ // canot use without function arrow function does not have this keyword bound
     console.log('will save document')
     next() // otherwise wit will no go to next middleware
 })

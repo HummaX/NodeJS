@@ -1,10 +1,15 @@
 // Defining schema
+
+// In mongoDB schamne validation only work until we give thme input they does not work to add those fields in DB
+// we give some value in pre hook undefined it will not go to DB instead we just wanted it for validation we can undefine it 
+
 let schemaClass = new mongoose.Schema(
   {
     pass: {
       select: false, // to hide this in reponse instead os uding - or seletc('-password') we can give it  in default in model
     },
     name: {
+      lowercase:true,
       type: String,
       required: [true, "A data is requires here must"], // Either true or false ,['This is Err we want to give']
       // Required is also called validator
@@ -17,6 +22,7 @@ let schemaClass = new mongoose.Schema(
       max: 10, // used for numbers
       maxLength:[40,'A tour name must have less or equal to 40 characters'], // used for string arrya of 10 string length
       minLength:[10,'A tour name must have higher or equal to 10 characters'], // used for string arrya of 10 string length
+      // validate only works on save and create, not on updatye specailly for password use .save on them
       validate: (value) => value.length > 3,
       validate:{validator:{function(val){this.val < 10 },message:`Value of this is greater than 10`}, // validation function could use regex here as well for text (check validation npm package)
       validate:[ validator.isEmail,'Email should br valid'], // NPM package validator

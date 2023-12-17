@@ -1,11 +1,13 @@
 // First we will make a file from where error could be generated either route of mongoDB or any file
-// Always use middleware in last of files
+// Always use middleware in bottom of files
 // must use next when passing and getting and throwing error
 
-// Error stacking
+// Error stacking (Error comes in object)
+//ValidationError: User validation failed: confirmPassword: Password is required (check what is name)
 console.log(err.stack)
 console.error(err)
-console.log(err.name)
+console.log(err.name)  // ValidationError
+console.log(err.message)
 err.isOperational
 
 // MongoDB Error
@@ -15,7 +17,7 @@ let tourFiltering = catchAsync(async(req,res,next)=>{ // middleware function is 
 })
 
 // Routing Error
-app.all("*", (req, res, next) => {
+app.all("*", (req, res, next) => { // here we are passing error to next middleware in Error class, with our error objects
     let err = new Error(`This route ${req.originalUrl} not found`);
     err.status = "fail";
     err.code = 500;

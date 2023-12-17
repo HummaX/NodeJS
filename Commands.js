@@ -35,3 +35,11 @@ console.log(process.argv) // will return 2 arrays where node is located and seco
 exports.function(){}
 exports.jame = function(){}
 module.exports = james
+module.exports = function()
+
+// Importing in node js
+// file with many fucntions
+app.use('/',auth.login) // auth is file and login is fucntion in it
+
+// auth file
+exports.login = function()
