@@ -21,6 +21,7 @@ res.status(200).send('Any message which will be sent as text')
 res.status(200).json({data:'data'})
 res.end('its is use to quickly end response without sending any data pr data in header')
 res.redirect('/url here') // in case of error or something
+.header("toekn", token) // to set Token in response headers and send to client
 
 //Request Commands > req
 req.method // to check HTTP method type
