@@ -22,9 +22,9 @@ let userSchema = new Schema({
 });
 
 userSchema.pre('save',async function(next){
-  if(!this.isModified('password')) return console.log('modified')
+  if(!this.isModified('password')) return console.log('modified') // checks if password is modified
 
-  this.password = await bcrypt.hash(this.password, 10) // returns promiss
+  this.password = await bcrypt.hash(this.password, 10) // returns promise
   this.confirmPassword = null // mongoose works only till validation after validation while sending data to DB we can change data
 
 return next()
