@@ -10,10 +10,14 @@ npm start // to run this file
 
 npm run 'script name' // to run custom script include RUN in npm
 
+// To directly run index.js file
+nodemon // just nodemon
+
 // To save dependency as DevDependencies
 npm install {package name} --save-dev
 
-// save dependencies as global
+// save dependencies as global, will add enviroment variable in windows as well
+// can directly use pm2 if saved as glocal 
 npm i nodemon --global
 
 // installing packe with specific version
@@ -27,6 +31,9 @@ version (1) for major updated .(11)=> also called mini version for new features 
 
 // to forefully exit in node use in jsfile (check scripting in node js file)
 process.exit()
+
+// to see working directory
+process.cwd()
 
 // To see path of running file
 console.log(process.argv) // will return 2 arrays where node is located and second from where script is running

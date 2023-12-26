@@ -17,17 +17,19 @@ app.all
 // Response Commands > res
 res.send('Any message which will be sent as text/html or anything it just checks output and sets header accordingly')
 res.render('to redner html file')
-res.status(200).send('Any message which will be sent as text')
+res.status(200).send('Any message which will be sent as text json will auto convert it to json')
 res.status(200).json({data:'data'})
 res.end('its is use to quickly end response without sending any data pr data in header')
 res.redirect('/url here') // in case of error or something
-.header("toekn", token) // to set Token in response headers and send to client
+res.header("toekn", token) // to set Token in response headers and send to client
+res.set('token', `Bearer ${token}`)
 
 //Request Commands > req
 req.method // to check HTTP method type
 req.requestTime = new Date().toISOString() // to get when that router was hit (custom req object)
 req.params // Params
 req.body //body json data
+req.headers
 req.originalUrl // for error if page not found show this cant find this page 
 req.query // Query string ?id=10&difficulty=20 // will auto pick id,difficulty dont need to give like params in url of express, by ?
 app.get('/api/v1/tours/:id/:id2/:id3?') 
@@ -46,10 +48,10 @@ app.post('/api/v1/tours',getAllTours)
 app.pust('/api/v1/tours',getAllTours)
 app.delete('/api/v1/tours/:id',deleteTour)
 // Params
-app.get('/api/v1/tours/:id',getTourById)
+app.get('/api/v1/tours/:id',middlewareFuncntion,getTourById) // can add 2 function in same
 // methods for same router
-app.route('/api/v1/tours').get(getAllTours)
-app.route('/api/v1/tours/:id').delete(deleteTour).get(getTourById)
+app.route('/api/v1/tours').get(middlewareFuncntion,getAllTours) // can add 2 function in same
+app.route('/api/v1/tours/:id').delete(deleteTour).get(middlewareFuncntion,getTourById) // can add 2 function in same
 
 
 // Router Method with router.use()

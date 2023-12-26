@@ -35,4 +35,8 @@ userSchema.pre('/^find/',async function(next){
 return next()
 })
 
+userSchema.methods.loginPassword = async function(bodyPassword,hashedDBPassword){
+  return await bcrypt.compare(bodyPassword,hashedDBPassword)
+}
+
 module.exports = mongoose.model('User', userSchema);
