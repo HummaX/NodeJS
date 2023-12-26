@@ -1,6 +1,7 @@
 let jwt = require('jsonwebtoken')
 let User = require('../Models/userModel')
 let appError = require('../utils/customError')
+let jwtHandler = require('../Middleware/jwtHandler') 
 
 exports.newUser = async function(req,res){
     try{
@@ -45,4 +46,9 @@ return res.status(200).json({Status:'Success',message:updateUser})
     }catch(err){
         return res.status(404).json({Status:'Failed',message:err.message})
     }
+}
+
+exports.findAllUsers = async function(req,res){
+let users = await User.find()
+return res.status(200).json({result:'Success',message:users})
 }
