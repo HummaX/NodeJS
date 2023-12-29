@@ -65,7 +65,8 @@ app.params((req,res,next,val)=>{ // params values is saved in val
 console.log(val)
 })
 app.all('/api/') //use * for all routes, will only work with HTTPS requests like (POST, GET, DELETE, PUT) unlike app.use() will run on everything (Check Error Handling below and folder) E.g: Statis pages will show static page for JS templates
-
+next() // will use to executue next fucntion/middlweare
+next(err) // if was pass valeus to next it will take it as error and throw error
 
 // To add or overWrite req,res data
 req.requestTime = new Date().toISOString() // this will add cutome obj in req we can use to get request time

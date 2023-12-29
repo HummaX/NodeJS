@@ -18,8 +18,9 @@ let userSchema = new Schema({
     type:String,
     required:[true, 'Password is required'],
     validate:{validator:function(value){return value === this.password},message:'Password are not same'}
-  }
-});
+  },
+  passwordChanged:Date,
+},{timestamps:true});
 
 userSchema.pre('save',async function(next){
   if(!this.isModified('password')) return console.log('modified')
@@ -37,6 +38,13 @@ return next()
 
 userSchema.methods.loginPassword = async function(bodyPassword,hashedDBPassword){
   return await bcrypt.compare(bodyPassword,hashedDBPassword)
+}
+
+userSchema.methods.checkTokenTimeAndPassword = async function(jwtIAT){
+  if(this.passwordChanged){
+return this.passwordChanged.getTime() > jwtIAT // auto return true false
+  }
+  return false
 }
 
 module.exports = mongoose.model('User', userSchema);

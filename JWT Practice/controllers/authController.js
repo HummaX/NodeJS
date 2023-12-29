@@ -2,6 +2,7 @@ let jwt = require('jsonwebtoken')
 let User = require('../Models/userModel')
 let appError = require('../utils/customError')
 let jwtHandler = require('../Middleware/jwtHandler') 
+let aSyncError = require('../utils/aSyncError')
 
 exports.newUser = async function(req,res){
     try{
@@ -10,11 +11,12 @@ exports.newUser = async function(req,res){
 let {email,password,confirmPassword} = req.body
 let registerUser = new User({email,password,confirmPassword})
  await registerUser.save()
-let token = jwt.sign({ token: 'Token123' }, 'hummas',);
+let token = jwt.sign({ token: registerUser._id }, 'hummas',{expiresIn: '10m'});
 // 1st Payload
 // 2nd Secret KEy
 // 3rd algorithm
-// 4th expiry key
+// 4th expiry key exp
+// 5th token issuing date iat
 return res.status(200).header("toekn", token).json({Status:'Success',message:registerUser,token})
     }catch(err){
         return res.status(404).json({Status:'Failed',message:err.message})
@@ -48,7 +50,7 @@ return res.status(200).json({Status:'Success',message:updateUser})
     }
 }
 
-exports.findAllUsers = async function(req,res){
+exports.findAllUsers = aSyncError(async (req,res)=>{
 let users = await User.find()
 return res.status(200).json({result:'Success',message:users})
-}
+})

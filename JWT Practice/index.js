@@ -15,8 +15,9 @@ async function connectDB(){
 connectDB()
 app.use(express.json(),routes())
 
-app.use(async(err,req,res,next)=>{
-res.status(err.status).json(err.message)
+app.use((err,req,res)=>{
+    console.log(err)
+res.status(err.status || 400).json(err.message)
 })
 
 app.listen(3000)

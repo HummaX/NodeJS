@@ -44,11 +44,12 @@ let schemaClass = new mongoose.Schema(
     startDates: [String], // enter date as string not new Date
   },
   {'These are schema options'}
-  //   {
-  //     // here comes schema option after schema object
-  //     toJSON: { virtual: true }, //each time mongoDb returns data as json we want virtuls to be true/work
-  //     toObject: { virtual: true },
-  //   }
+    {
+      // here comes schema option after schema object
+      toJSON: { virtual: true }, //each time mongoDb returns data as json we want virtuls to be true/work
+      toObject: { virtual: true },
+      {timestamps:true} // will show ceraetdAt and updatedAt
+    }
 );
 
 // Virtual (check virtual file)
