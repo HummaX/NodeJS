@@ -9,6 +9,7 @@ exports.newUser = async function(req,res){
 //let registerUser = new User(req.body) // dont use this, its security flaw
 // use this
 let {email,password,confirmPassword} = req.body
+console.log('Registed User')
 let registerUser = new User({email,password,confirmPassword})
  await registerUser.save()
 let token = jwt.sign({ token: registerUser._id }, 'hummas',{expiresIn: '10m'});
