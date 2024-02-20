@@ -49,6 +49,7 @@ let schemaClass = new mongoose.Schema(
       toJSON: { virtual: true }, //each time mongoDb returns data as json we want virtuls to be true/work
       toObject: { virtual: true },
       {timestamps:true} // will show ceraetdAt and updatedAt
+  strict:false // if that object does not exists in schema we can still add it otherwise objects get ignored if they are not in schema.
     }
 );
 
