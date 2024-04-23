@@ -3,6 +3,8 @@ let User = require('../Models/userModel')
 let appError = require('../utils/customError')
 let jwtHandler = require('../Middleware/jwtHandler') 
 let aSyncError = require('../utils/aSyncError')
+let crypto = require('crypto')
+let mailSender = require('../utils/mailSender')
 
 exports.newUser = async function(req,res){
     try{
@@ -55,3 +57,17 @@ exports.findAllUsers = aSyncError(async (req,res)=>{
 let users = await User.find()
 return res.status(200).json({result:'Success',message:users})
 })
+
+exports.forgetPassword = async(req, res, next)=>{
+    let user = await User.findOne(({email:req.body.email}))
+
+    if(user){
+        let token = await user.generatePasswordResetToken()
+        user.save({validateBeforeSave: false})
+        console.log(token,'===================>')
+        await mailSender(token)
+        return res.status(200).json({status:'Success', token})
+    }else{
+        return next(new appError('No User Found', 404))
+    }
+}

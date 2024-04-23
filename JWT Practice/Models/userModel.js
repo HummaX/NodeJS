@@ -1,6 +1,8 @@
 let mongoose = require("mongoose");
 // var validator = require('validator');
 const bcrypt = require('bcrypt');
+let crypto = require('crypto')
+
 let Schema = mongoose.Schema;
 
 let userSchema = new Schema({
@@ -20,6 +22,8 @@ let userSchema = new Schema({
     validate:{validator:function(value){return value === this.password},message:'Password are not same'}
   },
   passwordChanged:Date,
+  passwordResetToken:String,
+  passwordExpires:Date
 },{timestamps:true});
 
 userSchema.pre('save',async function(next){
@@ -45,6 +49,15 @@ userSchema.methods.checkTokenTimeAndPassword = async function(jwtIAT){
 return this.passwordChanged.getTime() > jwtIAT // auto return true false
   }
   return false
+}
+
+userSchema.methods.generatePasswordResetToken = async function(){
+  let resetToken = crypto.randomBytes(20).toString('hex')
+  crypto.createHash('sha256').update(resetToken).digest('hex')
+  this.passwordResetToken = resetToken
+  this.passwordExpires = new Date() + 10 * 60 * 1000
+  console.log(this)
+  return resetToken
 }
 
 module.exports = mongoose.model('User', userSchema);

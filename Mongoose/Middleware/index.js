@@ -56,3 +56,38 @@ tourSchema.pre('aggregation',function(next){
     this.pipeline.unShift({$match: {secretTour:{$ne: true}}}) // Now it will add this into aggregation (Pipeline/Array) which will filter all secret tours
     next()
 })
+
+
+// Methods
+
+// How t call thses Methods
+let user = User.find()
+// we can access these methods from this user object
+user.generatePasswordResetToken()
+// if updating model
+user.save()
+
+userSchema.pre('/^find/',async function(next){
+    if(this.isModified('password')) return console.log('modified')
+  return next()
+  })
+  
+  userSchema.methods.loginPassword = async function(bodyPassword,hashedDBPassword){
+    return await bcrypt.compare(bodyPassword,hashedDBPassword)
+  }
+  
+  userSchema.methods.checkTokenTimeAndPassword = async function(jwtIAT){
+    if(this.passwordChanged){
+  return this.passwordChanged.getTime() > jwtIAT // auto return true false
+    }
+    return false
+  }
+  
+  userSchema.methods.generatePasswordResetToken = async function(){
+    let resetToken = crypto.randomBytes(20).toString('hex')
+    crypto.createHash('sha256').update(resetToken).digest('hex')
+    this.passwordResetToken = resetToken
+    this.passwordExpires = new Date() + 10 * 60 * 1000
+    console.log(this)
+    return resetToken
+  }

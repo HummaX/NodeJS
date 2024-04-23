@@ -7,7 +7,8 @@ new:true //if true, return the modified document rather than the original in res
 images:[String] // if you want to make a array of string,
 startingDates:[Date] // mongodb will automatically parse these string dates into date
 //Working
-jame.find({},runvalidator:true,'or store these objects in object and point towards that object/variable name')
+jame.find({},runvalidator:true),'or store these objects in object and point towards that object/variable name')
+user.save({validateBeforeSave:false}) // like in reset Password when we send token it will, send it and password is required it will throw error now it will bypass password
 
 
 // To save model

@@ -16,8 +16,8 @@ connectDB()
 app.use(express.json(),routes())
 
 app.use((err,req,res,next)=>{
-    console.log(err)
+    console.log("err",err)
 res.status(err.status || 400).json(err.message)
 })
 
-app.listen(3000)
+app.listen(6969)
